@@ -11,19 +11,13 @@ function AdminDashboard() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetchData();
-  }, [filter]);
-
-  async function fetchData() {
+  const fetchData = async () => {
     try {
       setLoading(true);
       
-      // Get stats
       const statsRes = await api.get('/admin/dashboard/stats');
       setStats(statsRes.data.data);
 
-      // Get requests
       const endpoint = filter === 'pending' 
         ? '/admin/onboarding/pending' 
         : `/admin/onboarding?status=${filter}`;
@@ -35,7 +29,12 @@ function AdminDashboard() {
     } finally {
       setLoading(false);
     }
-  }
+  };
+
+  useEffect(() => {
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filter]);
 
   function getStatusBadge(status) {
     const classes = {

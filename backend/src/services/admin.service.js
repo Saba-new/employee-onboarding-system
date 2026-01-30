@@ -159,7 +159,6 @@ async function approveRequest(requestId, adminId, remarks = null) {
       );
     }
 
-    // Update request to approved
     const { data: updated, error: updateError } = await supabase
       .from('onboarding_requests')
       .update({
@@ -237,7 +236,6 @@ async function rejectRequest(requestId, adminId, remarks) {
       );
     }
 
-    // Update request to rejected
     const { data: updated, error: updateError } = await supabase
       .from('onboarding_requests')
       .update({

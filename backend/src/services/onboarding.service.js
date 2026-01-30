@@ -64,7 +64,6 @@ async function createRequest(employeeId, requestData) {
       created_at: new Date().toISOString()
     };
 
-    // Create onboarding request
     const { data: onboarding, error } = await supabase
       .from('onboarding_requests')
       .insert(onboardingData)
@@ -76,7 +75,6 @@ async function createRequest(employeeId, requestData) {
       throw new AppError('Failed to create onboarding request', 500);
     }
 
-    // BUSINESS LOGIC: Create initial status history entry
     await statusHistoryService.createHistoryEntry({
       onboarding_request_id: onboarding.id,
       from_status: null,

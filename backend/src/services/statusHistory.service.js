@@ -42,7 +42,6 @@ async function createHistoryEntry(data) {
     validateUUID(onboarding_request_id, 'Onboarding Request ID');
     validateUUID(changed_by, 'Changed By User ID');
 
-    // Create history entry
     const { data: history, error } = await supabase
       .from('status_history')
       .insert({

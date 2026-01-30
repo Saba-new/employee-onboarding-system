@@ -13,6 +13,11 @@ const {
   validateDocumentUpload,
   validateStatusUpdate 
 } = require('./validator.middleware');
+const {
+  validateLoginRequest,
+  validateRegisterRequest,
+  validateRejectRequest
+} = require('./validation.middleware');
 
 module.exports = {
   // Authentication
@@ -29,5 +34,8 @@ module.exports = {
   validateOnboardingRequest,
   validateUUIDParam,
   validateDocumentUpload,
-  validateStatusUpdate
+  validateStatusUpdate,
+  validateLoginRequest,
+  validateRegisterRequest,
+  validateRejectRequest
 };
